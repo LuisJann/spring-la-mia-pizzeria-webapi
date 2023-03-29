@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{pizzas/fragment :: resources}">
+    <meta charset="UTF-8">
+    <title>Pizzas</title>
+</head>
+<body>
+<nav th:replace="~{pizzas/fragment :: navbar('pizzas')}"></nav>
+<div th:if="${pizzas.size() == 0}">No Pizza :(</div>
+<div class="w-75 mx-auto mt-5">
+    <h1>Pizzas</h1>
+    <table th:unless="${pizzas.size() == 0}" class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pizza : ${pizzas}">
+            <th scope="row" th:text="${pizza.id}"></th>
+            <td th:text="${pizza.name}"></td>
+            <td th:text="${pizza.description}"></td>
+            <td th:text="${pizza.price}+0€"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<th:block th:replace="~{pizzas/fragment :: scripts}"></th:block>
+</body>
+</html>

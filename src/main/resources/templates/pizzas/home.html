@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{pizzas/fragment :: resources}">
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<nav th:replace="~{pizzas/fragment :: navbar('home')}"></nav>
+<div class="text-center d-grid gap-2 w-50 mx-auto">
+    <h1>Benvenuto nella BoolPizza</h1>
+    <a th:href="@{/pizzas}" class="btn btn-primary" type="button">Vai alle pizze!</a>
+</div>
+<th:block th:replace="~{pizzas/fragment :: scripts}"></th:block>
+</body>
+</html>
