@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{pizzas/fragment :: resources}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="~{pizzas/fragment :: navbar('show')}"></nav>
+<div class="container mt-5" th:object="${pizza}">
+    <h1 th:text="*{name}"></h1>
+    <h2 th:text="|Ingredients:  *{description}|" class="text-muted"></h2>
+    <hr/>
+    <h3 th:text="*{price}+0€" class="text-danger"></h3>
+</div>
+
+<th:block th:replace="~{pizzas/fragment :: scripts}"></th:block>
+</body>
+</html>

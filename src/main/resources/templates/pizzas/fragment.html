@@ -22,6 +22,11 @@
           <a class="nav-link" th:href="@{/pizzas}" th:classAppend="${current == 'pizzas'} ? text-danger : not-active">Pizzas</a>
         </li>
       </ul>
+      <form th:if="${pizzas}" class="d-flex" role="search" method="get" th:action="@{/pizzas}">
+        <input class="form-control me-2" type="search" placeholder="Cerca la tua pizza" aria-label="Search"
+               name="q" th:value="${keyword}">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
     </div>
   </div>
 </nav>
