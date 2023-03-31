@@ -1,6 +1,9 @@
 package org.learning.springlamiapizzeriacrud.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "pizzas")
@@ -8,8 +11,13 @@ public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotBlank
     private String name;
+    @Lob
+    @NotBlank
+    @Size(min = 10, max = 300, message = "La descrizione deve avere un numero di caratteri compreso tra 10 e 300")
     private String description;
+    @Positive
     private double price;
 
     public Integer getId() {
