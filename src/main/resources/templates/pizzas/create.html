@@ -10,7 +10,7 @@
 <!--FORM-->
 <form th:object="${pizza}" class="w-75 m-auto mt-5" method="post" th:action="@{/pizzas/create}">
     <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
+        <label for="name" class="form-label">Name*</label>
         <input th:errorClass="is-invalid" type="text" class="form-control" id="name" th:field="*{name}">
         <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}">
             <ul>
@@ -20,7 +20,7 @@
 
     </div>
     <div class="mb-3">
-        <label for="price" class="form-label">Prezzo</label>
+        <label for="price" class="form-label">Prezzo*</label>
         <input th:errorClass="is-invalid" type="number" class="form-control" id="price" th:field="*{price}">
         <div class="invalid-feedback" th:if="${#fields.hasErrors('price')}">
             <ul>
@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="mb-3">
-        <label for="description" class="form-label">Descrizione</label>
+        <label for="description" class="form-label">Descrizione*</label>
         <textarea th:errorClass="is-invalid" type="textarea" class="form-control" id="description"
                   th:field="*{description}"></textarea>
         <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}">

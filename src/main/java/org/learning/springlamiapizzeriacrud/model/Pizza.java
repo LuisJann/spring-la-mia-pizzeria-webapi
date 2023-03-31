@@ -11,13 +11,13 @@ public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotBlank
+    @NotBlank(message = "Inserisci un nome")
     private String name;
     @Lob
-    @NotBlank
+    @NotBlank(message = "Inserisci una descrizione")
     @Size(min = 10, max = 300, message = "La descrizione deve avere un numero di caratteri compreso tra 10 e 300")
     private String description;
-    @Positive
+    @Positive(message = "Inserisci un prezzo maggiore di 0")
     private double price;
 
     public Integer getId() {
