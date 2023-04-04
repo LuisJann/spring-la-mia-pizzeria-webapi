@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{pizzas/fragment :: resources}">
     <meta charset="UTF-8">
-    <title>Create</title>
+    <title>Edit</title>
 </head>
 <body>
 <nav th:replace="~{pizzas/fragment :: navbar('create')}"></nav>
-<!--FORM-->
-<form th:object="${pizza}" class="w-75 m-auto mt-5" method="post" th:action="@{/pizzas/create}">
+
+<form th:object="${pizza}" class="w-75 m-auto mt-5" method="post" th:action="@{|*{id}|}">
     <div class="mb-3">
         <label for="name" class="form-label">Name*</label>
         <input th:errorClass="is-invalid" type="text" class="form-control" id="name" th:field="*{name}">

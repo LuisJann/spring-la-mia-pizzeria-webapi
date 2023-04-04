@@ -37,4 +37,21 @@ public class PizzaService {
             throw new RuntimeException("Pizza non trovata");
         }
     }
+
+    public Pizza updatePizza(Pizza formPizza, Integer id) {
+        Pizza pizzaToUpdate = getById(id);
+        pizzaToUpdate.setName(formPizza.getName());
+        pizzaToUpdate.setDescription(formPizza.getDescription());
+        pizzaToUpdate.setPrice(formPizza.getPrice());
+        return pizzaRepository.save(pizzaToUpdate);
+    }
+
+    public boolean deleteById(Integer id) {
+        try {
+            pizzaRepository.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

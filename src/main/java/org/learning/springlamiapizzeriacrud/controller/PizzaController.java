@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -59,5 +60,41 @@ public class PizzaController {
             pizzaService.createPizza(formPizza);
             return "redirect:/pizzas";
         }
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Integer id, Model model) {
+        try {
+            Pizza pizza = pizzaService.getById(id);
+            model.addAttribute("pizza", pizza);
+            return "/pizzas/edit";
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "pizza with id" + id + " not found");
+        }
+    }
+
+    @PostMapping("/edit/{id}")
+    public String editPizza(@PathVariable Integer id, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult) {
+        try {
+            Pizza updatePizza = pizzaService.updatePizza(formPizza, id);
+            return "redirect:/pizzas/" + Integer.toString(updatePizza.getId());
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "pizza with id" + id + " not found");
+        }
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
+        try {
+            boolean check = pizzaService.deleteById(id);
+            if (check) {
+                redirectAttributes.addFlashAttribute("message", "pizza with id" + id + " delete");
+            } else {
+                redirectAttributes.addFlashAttribute("message", "Unable to delete pizza with id " + id);
+            }
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return "redirect:/pizzas";
     }
 }

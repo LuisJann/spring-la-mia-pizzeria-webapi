@@ -9,9 +9,17 @@
 <div class="w-75 mx-auto mt-5">
     <!-- <h1><a th:href="@{/pizzas/create}" class="btn btn-primary rounded-circle" title="add pizza"><i
              class="fa-solid fa-plus"></i></a></h1>-->
-    <h1 class="text-danger">Pizzas &#127829; <a th:href="@{/pizzas/create}" class="btn btn-danger rounded-circle"
-                                                title="add pizza"><i
-            class="fa-solid fa-plus"></i></a></h1>
+    <div class="d-flex justify-content-between">
+        <div>
+            <h1 class="text-danger">Pizzas &#127829;</h1>
+        </div>
+        <div class="rounded-pill border btn btn-danger d-flex flex-nowrap  align-items-center px-4">
+            <a style="text-decoration: none" th:href="@{/pizzas/create}"
+               title="add pizza" class="text-white">
+                <span class="mx-1">New Pizza</span>
+                <i class="fa-solid fa-pizza-slice"></i></a>
+        </div>
+    </div>
     <div th:if="${pizzas.size() == 0}">No Pizza :(</div>
     <table th:unless="${pizzas.size() == 0}" class="table table-striped">
         <thead>
@@ -28,8 +36,14 @@
             <th th:text="${pizza.name}"></th>
             <td th:text="${pizza.description}"></td>
             <td class="text-danger" th:text="${pizza.price}+0€"></td>
-            <td><a th:href="@{|/pizzas/${pizza.id}|}" class="btn btn-danger btn-sm" title="detail"><i
-                    class="fa-solid fa-circle-info"></i></a></td>
+            <td class="d-flex flex-nowrap py-3">
+                <a th:href="@{|/pizzas/${pizza.id}|}" class="btn btn-primary btn-sm" title="detail"><i
+                        class="fa-solid fa-circle-info"></i></a>
+                <a th:href="@{|/pizzas/edit/${pizza.id}|}" class="mx-2 btn btn-warning btn-sm" title="edit"><i
+                        class="fa-solid fa-pen-to-square"></i></a>
+                <a th:href="@{|/pizzas/delete/${pizza.id}|}" class="btn btn-danger btn-sm" title="edit"><i
+                        class="fa-solid fa-trash-can"></i></a>
+            </td>
         </tr>
         </tbody>
     </table>
