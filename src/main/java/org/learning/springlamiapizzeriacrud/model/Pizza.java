@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
+import java.util.List;
+
 @Entity
 @Table(name = "pizzas")
 public class Pizza {
@@ -13,6 +15,9 @@ public class Pizza {
     private Integer id;
     @NotBlank(message = "Inserisci un nome")
     private String name;
+
+    @OneToMany(mappedBy = "pizza")
+    private List<Discount> discounts;
     @Lob
     @NotBlank(message = "Inserisci una descrizione")
     @Size(min = 10, max = 300, message = "La descrizione deve avere un numero di caratteri compreso tra 10 e 300")

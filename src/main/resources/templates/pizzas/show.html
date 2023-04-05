@@ -13,6 +13,34 @@
     <h3 th:text="*{price}+0€" class="text-danger"></h3>
 </div>
 
+<!-- discount -->
+<div class="container mt-5">
+<h2>
+    <div class="d-flex d-flex justify-content-between">
+    <span>Special Offer</span>
+    <a th:href="@{/discounts/create(pizzaId=${pizza.id})}"
+       class="btn btn-danger rounded-circle"
+       title="add borrowing">
+        <i class="fa-solid fa-plus"></i>
+    </a>
+    </div>
+</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Start date</th>
+        <th scope="col">End date</th>
+        <th scope="col">Name Offer</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="discount : *{discounts}" th:object="${discount}">
+        <td th:text="${discount.title}"></td>
+        <td th:text="${#temporals.format(discount.endDiscount, 'dd/MM/yyyy')}"></td>
+        <td th:text="${#temporals.format(discount.startDiscount, 'dd/MM/yyyy')}"></td>
+    </tr>
+</div>
+
 <th:block th:replace="~{pizzas/fragment :: scripts}"></th:block>
 </body>
 </html>
