@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/discounts")
@@ -26,19 +25,18 @@ public class DiscountController {
     private PizzaService pizzaService;
 
     @GetMapping("/create")
-    public String create(@RequestParam(name = "pizzaId") Optional<Integer> id, Model model) {
+    public String create(@RequestParam(name = "pizzaId") Integer id, Model model) {
         Discount discount = new Discount();
         discount.setStartDiscount(LocalDate.now());
         discount.setEndDiscount(LocalDate.now().plusMonths(1));
-        if (id.isPresent()) {
-            try {
-                Pizza pizza = pizzaService.getById(id.get());
-                discount.setPizza(pizza);
-            } catch (RuntimeException e) {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-            }
+
+        try {
+            Pizza pizza = pizzaService.getById(id);
+            discount.setPizza(pizza);
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-        model.addAttribute("templates/discounts", discount);
+        model.addAttribute("discount", discount);
         return "/discounts/create";
     }
 

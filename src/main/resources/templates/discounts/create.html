@@ -7,7 +7,7 @@
 </head>
 <body>
 <nav th:replace="~{pizzas/fragment :: navbar('create')}"></nav>
-<div class="container">
+<div class="container" th:with="pizza=${discount.pizza}">
     <h1>
         <span>Create Discount</span>
         <span th:if="${pizza != null}" th:text="|for ${pizza.name}|"></span>

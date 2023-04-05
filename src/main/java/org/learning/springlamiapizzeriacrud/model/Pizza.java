@@ -56,4 +56,12 @@ public class Pizza {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public List<Discount> getDiscounts() {
+        return discounts;
+    }
+
+    public void setDiscounts(List<Discount> discounts) {
+        this.discounts = discounts;
+    }
 }
