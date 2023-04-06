@@ -15,16 +15,3 @@ INSERT INTO ingredients (ingredient) VALUES('sugo');
 INSERT INTO ingredients (ingredient) VALUES('tonno');
 INSERT INTO ingredients (ingredient) VALUES('melanzane');
 
-INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(1,1);
-INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(1,5);
-INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(1,4);
-INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(1,6);
-INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(2,4);
-INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(2,5);
-INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(2,6);
-INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(2,7);
-INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(2,9);
-INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(3,1);
-INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(3,2);
-INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(3,8);
-INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(3,9);

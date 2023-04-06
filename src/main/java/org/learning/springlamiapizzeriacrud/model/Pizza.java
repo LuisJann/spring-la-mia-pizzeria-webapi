@@ -74,4 +74,12 @@ public class Pizza {
     public void setDiscounts(List<Discount> discounts) {
         this.discounts = discounts;
     }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
 }

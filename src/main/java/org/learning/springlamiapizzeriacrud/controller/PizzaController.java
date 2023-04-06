@@ -3,6 +3,7 @@ package org.learning.springlamiapizzeriacrud.controller;
 import jakarta.validation.Valid;
 import org.learning.springlamiapizzeriacrud.model.Pizza;
 import org.learning.springlamiapizzeriacrud.service.DiscountService;
+import org.learning.springlamiapizzeriacrud.service.IngredientService;
 import org.learning.springlamiapizzeriacrud.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,9 @@ public class PizzaController {
 
     @Autowired
     private DiscountService discountService;
+
+    @Autowired
+    private IngredientService ingredientService;
 
     @GetMapping
     public String index(Model model, @RequestParam(name = "q") Optional<String> keyword) {
@@ -53,6 +57,7 @@ public class PizzaController {
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("pizza", new Pizza());
+        model.addAttribute("ingredientList", ingredientService.getAllIngredient());
         return "/pizzas/create";
     }
 
@@ -62,6 +67,7 @@ public class PizzaController {
             return "/pizzas/create";
         } else {
             pizzaService.createPizza(formPizza);
+            model.addAttribute("ingredientList", ingredientService.getAllIngredient());
             return "redirect:/pizzas";
         }
     }
@@ -71,6 +77,7 @@ public class PizzaController {
         try {
             Pizza pizza = pizzaService.getById(id);
             model.addAttribute("pizza", pizza);
+            model.addAttribute("ingredientList", ingredientService.getAllIngredient());
             return "/pizzas/edit";
         } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "pizza with id" + id + " not found");
@@ -78,9 +85,10 @@ public class PizzaController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editPizza(@PathVariable Integer id, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult) {
+    public String editPizza(@PathVariable Integer id, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
         try {
             Pizza updatePizza = pizzaService.updatePizza(formPizza, id);
+            model.addAttribute("ingredientList", ingredientService.getAllIngredient());
             return "redirect:/pizzas/" + Integer.toString(updatePizza.getId());
         } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "pizza with id" + id + " not found");
