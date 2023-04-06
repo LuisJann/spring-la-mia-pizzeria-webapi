@@ -4,5 +4,27 @@ INSERT INTO pizzas (name, description, price) VALUES('Prosciutto e Funghi', 'Una
 INSERT INTO pizzas (name, description, price) VALUES('Vegetariana', 'Una pizza senza carne, con salsa di pomodoro, mozzarella fresca, pomodori freschi, peperoni, cipolle rosse, olive nere e origano', 9.00);
 INSERT INTO pizzas (name, description, price) VALUES('Salmone Piccante', 'Una pizza con salsa di pomodoro, mozzarella fresca e salame piccante', 10.00);
 
-INSERT INTO discounts (title, start_discount, end_discount) VALUES('Plus', '2023-04-05', '2023-05-05');
-INSERT INTO discounts (title, start_discount, end_discount) VALUES('Middle', '2023-04-05', '2023-04-20');
+INSERT INTO ingredients (ingredient) VALUES('cipolla');
+INSERT INTO ingredients (ingredient) VALUES('prosciutto');
+INSERT INTO ingredients (ingredient) VALUES('wrustel');
+INSERT INTO ingredients (ingredient) VALUES('mozzarella');
+INSERT INTO ingredients (ingredient) VALUES('olio');
+INSERT INTO ingredients (ingredient) VALUES('origano');
+INSERT INTO ingredients (ingredient) VALUES('olive');
+INSERT INTO ingredients (ingredient) VALUES('sugo');
+INSERT INTO ingredients (ingredient) VALUES('tonno');
+INSERT INTO ingredients (ingredient) VALUES('melanzane');
+
+INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(1,1);
+INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(1,5);
+INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(1,4);
+INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(1,6);
+INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(2,4);
+INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(2,5);
+INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(2,6);
+INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(2,7);
+INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(2,9);
+INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(3,1);
+INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(3,2);
+INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(3,8);
+INSERT INTO pizza_ingredient (pizza_id, ingredient_id) VALUES(3,9);

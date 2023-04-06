@@ -13,4 +13,13 @@ public class DiscountService {
     public Discount create(Discount fomrDiscount) {
         return discountRopository.save(fomrDiscount);
     }
+
+    public boolean deleteById(Integer discountId) {
+        try {
+            discountRopository.deleteById(discountId);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
