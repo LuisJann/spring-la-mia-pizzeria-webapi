@@ -15,3 +15,11 @@ INSERT INTO ingredients (ingredient) VALUES('sugo');
 INSERT INTO ingredients (ingredient) VALUES('tonno');
 INSERT INTO ingredients (ingredient) VALUES('melanzane');
 
+INSERT INTO users (email, password, username) VALUES('admin@gmail.com', '{noop}admin', 'admin');
+INSERT INTO roles (name) VALUES('ADMIN');
+INSERT INTO users_roles (user_id, roles_id) VALUES(1,1);
+
+INSERT INTO users (email, password, username) VALUES('user@gmail.com', '{noop}user', 'user');
+INSERT INTO roles (name) VALUES('USER');
+INSERT INTO users_roles (user_id, roles_id) VALUES(2,2);
+
