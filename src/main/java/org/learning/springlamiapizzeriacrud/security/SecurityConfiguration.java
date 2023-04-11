@@ -45,6 +45,7 @@ public class SecurityConfiguration {
                 .permitAll().and().formLogin()
                 .and().logout()
                 .and().exceptionHandling();
+        httpSecurity.csrf().disable();
         return httpSecurity.build();
     }
 }
